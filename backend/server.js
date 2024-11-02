@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const deviceRoutes = require('./routes/devices');
+const networkRoutes = require('./routes/network'); 
 require('dotenv').config();
 
 const app = express();
@@ -36,6 +38,10 @@ app.use(express.json());
 mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.error(err));
+
+// Use device and network routes
+app.use('/api/devices', deviceRoutes);
+app.use('/api/network', networkRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

@@ -1,0 +1,31 @@
+<router-outlet>
+    <div class="content-container">
+        <h2>Chào mừng đến với Quản Lý Thiết Bị Mạng</h2>
+        <p>Ứng dụng này giúp bạn quản lý thiết bị mạng một cách dễ dàng và hiệu quả.</p>
+
+        <div class="network-status">
+            <h5>Tình Trạng Mạng Hiện Tại</h5>
+            <div class="status">
+                <div class="status-item">
+                    <h4>Tốc Độ Tải</h4>
+                    <p id="download-speed">{{ downloadSpeed }}</p>
+                </div>
+                <div class="status-item">
+                    <h4>Tốc Độ Tải Lên</h4>
+                    <p id="upload-speed">{{ uploadSpeed }}</p>
+                </div>
+                <div class="status-item">
+                    <h4>Thời Gian Hoạt Động</h4>
+                    <p id="uptime">{{ uptime }}</p>
+                </div>
+                <div class="status-item">
+                    <h4>Tình Trạng Kết Nối</h4>
+                    <p id="connection-status"
+                        [ngClass]="{'connected': connectionStatus === 'Kết Nối', 'disconnected': connectionStatus === 'Mất Kết Nối'}">
+                        {{ connectionStatus }}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</router-outlet>

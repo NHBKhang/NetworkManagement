@@ -1,3 +1,7 @@
+const express = require('express');
+const router = express.Router();
+// const Device = require('../models/Device');
+
 /**
  * @swagger
  * components:
@@ -38,6 +42,15 @@
  *               items:
  *                 $ref: '#/components/schemas/Device'
  */
-app.get('/api/devices', async (req, res) => {
-    // Logic để lấy danh sách thiết bị
+
+router.get('/', async (req, res) => {
+    // try {
+    //     const devices = await Device.find();
+    //     res.status(200).json(devices);
+    // } catch (error) {
+    //     console.error(error);
+    //     res.status(500).json({ message: 'Server error' });
+    // }
 });
+
+module.exports = router;
