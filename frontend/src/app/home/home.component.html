@@ -8,15 +8,24 @@
             <div class="status">
                 <div class="status-item">
                     <h4>Ping</h4>
-                    <p id="uptime">{{ networkData?.ping }}</p>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.ping" id="ping">
+                        {{ networkData?.ping }} ms
+                    </p>
                 </div>
                 <div class="status-item">
-                    <h4>Tốc Độ Tải</h4>
-                    <p id="download-speed">{{ networkData?.downloadSpeed }}</p>
+                    <h4>Tốc Độ Tải Về</h4>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.downloadSpeed" id="download-speed">
+                        {{ networkData?.downloadSpeed }} Mbps
+                    </p>
                 </div>
                 <div class="status-item">
                     <h4>Tốc Độ Tải Lên</h4>
-                    <p id="upload-speed">{{ networkData?.uploadSpeed }}</p>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.uploadSpeed" id="upload-speed">
+                        {{ networkData?.uploadSpeed }} Mbps
+                    </p>
                 </div>
             </div>
         </div>

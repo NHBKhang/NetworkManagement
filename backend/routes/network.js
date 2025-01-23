@@ -11,7 +11,7 @@ router.get('/speed', (req, res) => {
 
     try {
       const data = JSON.parse(stdout);
-      res.json({
+      res.status(200).json({
         downloadSpeed: data.downloadSpeed, // in Mbps
         uploadSpeed: data.uploadSpeed,     // in Mbps
         ping: data.latency                 // in ms
