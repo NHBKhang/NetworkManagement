@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { SpeedTestService } from './speed-test.service';
+import { DevicesService } from './devices.service';
 
-describe('SpeedTestService', () => {
-  let service: SpeedTestService;
+describe('DevicesService', () => {
+  let service: DevicesService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(SpeedTestService);
+    service = TestBed.inject(DevicesService);
   });
 
   it('should be created', () => {

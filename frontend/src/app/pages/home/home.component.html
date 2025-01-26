@@ -1,0 +1,62 @@
+<router-outlet>
+    <div class="content-container">
+        <h2>Chào mừng đến với Quản Lý Thiết Bị Mạng</h2>
+        <p>Ứng dụng này giúp bạn quản lý thiết bị mạng một cách dễ dàng và hiệu quả.</p>
+
+        <div class="network-status">
+            <h5>Tình Trạng Mạng Hiện Tại</h5>
+            <div class="status">
+                <div class="status-item">
+                    <h4>Ping</h4>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.ping" id="ping">
+                        {{ networkData?.ping }} ms
+                    </p>
+                </div>
+                <div class="status-item">
+                    <h4>Tốc Độ Tải Về</h4>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.downloadSpeed" id="download-speed">
+                        {{ networkData?.downloadSpeed }} Mbps
+                    </p>
+                </div>
+                <div class="status-item">
+                    <h4>Tốc Độ Tải Lên</h4>
+                    <p *ngIf="loading" class="skeleton"></p>
+                    <p *ngIf="!loading && networkData?.uploadSpeed" id="upload-speed">
+                        {{ networkData?.uploadSpeed }} Mbps
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="network-header">Thông Tin Mạng</h4>
+        <div class="network-info">
+
+            <div *ngFor="let iface of networkInterfaces" class="network-item">
+                <h3>{{ iface.iface }}</h3>
+
+                <div class="network-details">
+                    <p><strong>Tên đầy đủ:</strong> {{ iface.ifaceName }}</p>
+                    <p><strong>Loại:</strong> {{ iface.type || 'Không xác định' }}</p>
+                    <p><strong>Địa Chỉ IPv4:</strong> {{ iface.ip4 || 'N/A' }}</p>
+                    <p><strong>IPv4 Subnet:</strong> {{ iface.ip4subnet || 'N/A' }}</p>
+                    <p><strong>Địa Chỉ IPv6:</strong> {{ iface.ip6 || 'N/A' }}</p>
+                    <p><strong>IPv6 Subnet:</strong> {{ iface.ip6subnet || 'N/A' }}</p>
+                    <p><strong>Địa Chỉ MAC:</strong> {{ iface.mac }}</p>
+                    <p><strong>Trạng Thái:</strong>
+                        <span class="status-indicator"
+                            [ngClass]="{'up': iface.operstate === 'up', 'down': iface.operstate !== 'up'}">
+                            {{ iface.operstate === 'up' ? 'Hoạt động' : 'Không hoạt động' }}
+                        </span>
+                    </p>
+                    <p><strong>Tốc Độ (Mbps):</strong> {{ iface.speed ? iface.speed : 'N/A' }}</p>
+                    <p><strong>DHCP:</strong> {{ iface.dhcp ? 'Có' : 'Không' }}</p>
+                    <p><strong>IEEE 802.1X Auth:</strong> {{ iface.ieee8021xAuth || 'Không xác định' }}</p>
+                    <p><strong>IEEE 802.1X State:</strong> {{ iface.ieee8021xState || 'Không xác định' }}</p>
+                    <p><strong>Số lần thay đổi mạng:</strong> {{ iface.carrierChanges }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</router-outlet>

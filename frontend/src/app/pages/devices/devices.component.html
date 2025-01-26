@@ -1,0 +1,58 @@
+<div class="device-container">
+    <h1>Quản Lý Thiết Bị</h1>
+
+    <div class="device-table">
+        <h2>Danh Sách Thiết Bị</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Tên Thiết Bị</th>
+                    <th>Loại</th>
+                    <th>Trạng Thái</th>
+                    <th>Thao Tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let device of devices">
+                    <td>{{ device.name }}</td>
+                    <td>{{ device.type }}</td>
+                    <td>
+                        <!-- <span
+                            [ngClass]="{'active': device.status === 'active', 'inactive': device.status === 'inactive'}">
+                            {{ device.status }}
+                        </span> -->
+                    </td>
+                    <td>
+                        <button class="btn btn-info" (click)="editDevice(device)">Chỉnh Sửa</button>
+                        <button class="btn btn-danger" (click)="deleteDevice(device.id)">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <div class="device-actions">
+        <h3>Thêm Thiết Bị Mới</h3>
+        <form (ngSubmit)="addDevice()" #deviceForm="ngForm">
+            <div class="form-group">
+                <label for="name">Tên Thiết Bị</label>
+                <input type="text" id="name" class="form-control" [(ngModel)]="newDevice.name" name="name" required />
+            </div>
+
+            <div class="form-group">
+                <label for="type">Loại Thiết Bị</label>
+                <input type="text" id="type" class="form-control" [(ngModel)]="newDevice.type" name="type" required />
+            </div>
+
+            <div class="form-group">
+                <label for="status">Trạng Thái</label>
+                <select id="status" class="form-control" [(ngModel)]="newDevice.status" name="status" required>
+                    <option value="active">Hoạt động</option>
+                    <option value="inactive">Không hoạt động</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" [disabled]="!deviceForm.form.valid">Thêm Thiết Bị</button>
+        </form>
+    </div> -->
+</div>

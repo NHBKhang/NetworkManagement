@@ -1,6 +1,7 @@
 const express = require('express');
+const { getCurrentDevice } = require('../controllers/deviceController');
 const router = express.Router();
-// const Device = require('../models/Device');
+const Device = require('../models/Device');
 
 /**
  * @swagger
@@ -52,5 +53,7 @@ router.get('/', async (req, res) => {
     //     res.status(500).json({ message: 'Server error' });
     // }
 });
+
+router.get('/current-device', getCurrentDevice);
 
 module.exports = router;

@@ -8,6 +8,10 @@ const deviceSchema = new mongoose.Schema({
     type: {
         type: String,
         required: true,
+    },
+    ip: {
+        type: String,
+        required: true,
     }
 }, {
     timestamps: true
