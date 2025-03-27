@@ -1,18 +1,23 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger');
 const deviceRoutes = require('./routes/devices');
 const networkRoutes = require('./routes/network');
+const { Server } = require('socket.io');
+const http = require('http');
 require('dotenv').config();
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 const PORT = process.env.PORT || 5000;
 
 // Cấu hình middleware
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
 // Kết nối MongoDB
 mongoose.connect(process.env.MONGODB_URI)

@@ -1,7 +1,6 @@
 const express = require('express');
-const { getCurrentDevice } = require('../controllers/deviceController');
+const { getCurrentDevice, addDevice, getDevices, checkDeviceStatus } = require('../controllers/deviceController');
 const router = express.Router();
-const Device = require('../models/Device');
 
 /**
  * @swagger
@@ -44,15 +43,11 @@ const Device = require('../models/Device');
  *                 $ref: '#/components/schemas/Device'
  */
 
-router.get('/', async (req, res) => {
-    // try {
-    //     const devices = await Device.find();
-    //     res.status(200).json(devices);
-    // } catch (error) {
-    //     console.error(error);
-    //     res.status(500).json({ message: 'Server error' });
-    // }
-});
+router.post('', addDevice);
+
+router.get('', getDevices);
+
+router.get('/:id/status', checkDeviceStatus);
 
 router.get('/current-device', getCurrentDevice);
 
